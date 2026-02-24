@@ -225,6 +225,7 @@ private fun TranslationOverlayCard(modifier: Modifier = Modifier) {
 // ──────────────────────────────────────────────
 // Control Buttons Row
 // ──────────────────────────────────────────────
+@Suppress("DEPRECATION")
 @Composable
 private fun ControlButtonsRow(modifier: Modifier = Modifier) {
     Row(

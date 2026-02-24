@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="app/src/main/res/mipmap-xxhdpi/ic_launcher.png" alt="Gestura Logo" width="120" height="120" />
+  <img src="app/src/main/res/mipmap-anydpi-v26/ic_launcher.png" alt="Gestura Logo" width="120" height="120" />
 
   # 🤟 Gestura
 

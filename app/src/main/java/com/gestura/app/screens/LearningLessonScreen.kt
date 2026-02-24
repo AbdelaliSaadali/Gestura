@@ -62,6 +62,7 @@ fun LearningLessonScreen() {
 // ──────────────────────────────────────────────
 // Top App Bar with Progress
 // ──────────────────────────────────────────────
+@Suppress("DEPRECATION")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun LessonTopBar() {
@@ -338,6 +339,7 @@ private fun UserCameraBox(modifier: Modifier = Modifier) {
 // ──────────────────────────────────────────────
 // Bottom Row: Streak + Next Sign
 // ──────────────────────────────────────────────
+@Suppress("DEPRECATION")
 @Composable
 private fun BottomActionRow(modifier: Modifier = Modifier) {
     Row(

@@ -88,7 +88,7 @@ Follow these steps to set up the project locally for development and testing.
 
 *(Replace with actual screenshots of your Compose UI)*
 
-|<img src="https://via.placeholder.com/250x500.png?text=Translation+Screen" width="200" alt="Sign to Text Translation Screen">|<img src="https://via.placeholder.com/250x500.png?text=Learning+Screen" width="200" alt="Learning Portal Screen">|
+|<img src="demo/stitch_sign_to_text_translation (2)/screen.png" width="200" alt="Sign to Text Translation Screen">|<img src="demo/stitch_sign_to_text_translation (3)/screen.png" width="200" alt="Learning Portal Screen">|
 |:---:|:---:|
 | **Real-time Translation** | **Interactive Learning** |
 

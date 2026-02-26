@@ -11,7 +11,7 @@ import com.gestura.app.R
 /**
  * Lexend font family for the Gestura app.
  *
- * Place the following TTF files in `app/src/main/res/font/`:
+ * Place the following TTF files in `app/src/main/assets/fonts/`:
  *   - lexend_light.ttf
  *   - lexend_regular.ttf
  *   - lexend_medium.ttf
@@ -109,4 +109,3 @@ val GesturaTypography = Typography(
         lineHeight = 14.sp,
     ),
 )
-

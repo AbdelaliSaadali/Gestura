@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="Logo.jpeg" alt="Gestura Logo" width="120" height="120" />
+  <img src="/Logo.jpeg" alt="Gestura Logo" width="120" height="120" />
 
   # 🤟 Gestura
 

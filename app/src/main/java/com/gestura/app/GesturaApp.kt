@@ -1,5 +1,6 @@
 package com.gestura.app
 
+import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -20,6 +21,16 @@ import com.gestura.app.ui.theme.*
 @Composable
 fun GesturaApp() {
     val navController = rememberNavController()
+
+    // ── Debug: log every destination change ──
+    DisposableEffect(navController) {
+        val listener = androidx.navigation.NavController.OnDestinationChangedListener { _, destination, _ ->
+            Log.d("NAV_DEBUG", "Destination changed to: ${destination.route}")
+        }
+        navController.addOnDestinationChangedListener(listener)
+        onDispose { navController.removeOnDestinationChangedListener(listener) }
+    }
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 

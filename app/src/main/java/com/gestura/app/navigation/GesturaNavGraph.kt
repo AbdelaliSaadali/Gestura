@@ -16,7 +16,7 @@ fun GesturaNavGraph(navController: NavHostController) {
         startDestination = Screen.Home.route,
     ) {
         composable(Screen.Home.route) {
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
         composable(Screen.VoiceToSign.route) {
             VoiceToSignScreen()

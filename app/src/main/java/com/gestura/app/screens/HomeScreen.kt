@@ -1,5 +1,6 @@
 package com.gestura.app.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -21,10 +22,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.rememberNavController
+import com.gestura.app.navigation.Screen
 import com.gestura.app.ui.theme.*
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,10 +43,26 @@ fun HomeScreen() {
         HomeHeader()
 
         // ── Card 1: Talk to a Signer ──
-        TalkToSignerCard()
+        TalkToSignerCard(onStartSpeaking = {
+            Log.d("NAV_DEBUG", "Start Speaking clicked, navigating to: ${Screen.VoiceToSign.route}")
+            navController.navigate(Screen.VoiceToSign.route) {
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+                launchSingleTop = true
+            }
+        })
 
         // ── Card 2: Understand a Signer ──
-        UnderstandSignerCard()
+        UnderstandSignerCard(onOpenCamera = {
+            Log.d("NAV_DEBUG", "Open Camera clicked, navigating to: ${Screen.SignToText.route}")
+            navController.navigate(Screen.SignToText.route) {
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+                launchSingleTop = true
+            }
+        })
 
         // ── Card 3: Learning Portal (Dark) ──
         LearningPortalCard()
@@ -93,7 +114,7 @@ private fun HomeHeader() {
 // Card 1: Talk to a Signer
 // ──────────────────────────────────────────────
 @Composable
-private fun TalkToSignerCard() {
+private fun TalkToSignerCard(onStartSpeaking: () -> Unit) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
@@ -143,7 +164,7 @@ private fun TalkToSignerCard() {
             )
 
             Button(
-                onClick = { },
+                onClick = onStartSpeaking,
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(14.dp),
                 colors = ButtonDefaults.buttonColors(
@@ -171,7 +192,7 @@ private fun TalkToSignerCard() {
 // Card 2: Understand a Signer
 // ──────────────────────────────────────────────
 @Composable
-private fun UnderstandSignerCard() {
+private fun UnderstandSignerCard(onOpenCamera: () -> Unit) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
@@ -221,7 +242,7 @@ private fun UnderstandSignerCard() {
             )
 
             OutlinedButton(
-                onClick = { },
+                onClick = onOpenCamera,
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(14.dp),
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = Primary),
@@ -391,7 +412,7 @@ private fun DarkStatCard(
 @Composable
 private fun HomeScreenPreview() {
     GesturaTheme(darkTheme = false) {
-        HomeScreen()
+        HomeScreen(navController = rememberNavController())
     }
 }
 

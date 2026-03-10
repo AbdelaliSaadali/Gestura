@@ -14,3 +14,9 @@
 .cxx
 local.properties
 /app/build/
+
+# Local backend datasets and generated Python artifacts
+/backend/archive/
+/backend/asl_landmarks.json
+/backend/__pycache__/
+*.pyc

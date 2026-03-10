@@ -192,8 +192,8 @@ GESTURA/
 
 | | | | |
 |:---:|:---:|:---:|:---:|
-|<img src="demo/stitch_sign_to_text_translation (2)/screen.png" width="180" alt="Real-time Translation">|<img src="demo/stitch_sign_to_text_translation (3)/screen.png" width="180" alt="Interactive Learning">|<img src="demo/stitch_sign_to_text_translation (4)/screen.png" width="180" alt="Voice to Sign">|<img src="demo/stitch_sign_to_text_translation (5)/screen.png" width="180" alt="Fingerspelling">|
-| **Real-time Translation** | **Interactive Learning** | **Voice to Sign** | **Fingerspelling** |
+|<img src="demo/stitch_sign_to_text_translation (2)/screen.png" width="180" alt="Real-time Translation">|<img src="demo/stitch_sign_to_text_translation (3)/screen.png" width="180" alt="Interactive Learning">|<img src="demo/stitch_sign_to_text_translation (1)/screen.png" width="180" alt="Voice to Sign">|<img src="demo/stitch_sign_to_text_translation/screen.png" width="180" alt="Home Page">|
+| **Real-time Translation** | **Interactive Learning** | **Voice to Sign** | **Home Page** |
 
 ---
 

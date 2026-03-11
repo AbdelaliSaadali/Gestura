@@ -515,43 +515,39 @@ private fun TranscriptionCard(
     Box {
         ElevatedCard(
             modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(20.dp),
-            elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp),
-            colors = CardDefaults.elevatedCardColors(containerColor = SurfaceLight),
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+            ),
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(20.dp)
-                    .padding(end = 48.dp), // space for FAB
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Icon(
-                        Icons.Filled.SubtitlesOff,
-                        contentDescription = null,
-                        tint = Primary,
-                        modifier = Modifier.size(18.dp),
-                    )
+            Column(modifier = Modifier.padding(16.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = when {
-                            isListening -> "Listening…"
-                            isTranslating -> "Translating…"
-                            else -> "Transcription"
-                        },
-                        style = MaterialTheme.typography.labelLarge,
-                        color = TextMain,
+                        text = "Transcription",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onSurface,
                     )
+                    if (isListening) {
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Listening...",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.error,
+                        )
+                    }
                 }
-
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = if (transcription.isNotBlank()) "\"$transcription\""
-                    else "\"Tap the microphone and start speaking…\"",
+                    text = if (transcription.isNotBlank()) {
+                        transcription
+                    } else {
+                        "Your speech will appear here..."
+                    },
                     style = MaterialTheme.typography.bodyLarge,
-                    color = if (transcription.isNotBlank()) TextMain else TextMuted,
-                    fontStyle = FontStyle.Italic,
+                    color = if (transcription.isNotBlank()) {
+                        MaterialTheme.colorScheme.onSurface
+                    } else {
+                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    },
                 )
             }
         }

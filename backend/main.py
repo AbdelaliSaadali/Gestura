@@ -129,6 +129,22 @@ def words_to_glosses(words: list[str]) -> list[str]:
     return [w.upper() for w in words]
 
 
+def compress_frames(frames):
+    if not frames:
+        return []
+    # Keep only every Nth frame, max 20 frames
+    step = max(1, len(frames) // 20)
+    reduced = frames[::step][:20]
+    # Keep only landmarks 0-74 (drop face landmarks 75-179)
+    reduced = [frame[:75] for frame in reduced]
+    # Round to 3 decimal places
+    reduced = [
+        [[round(c, 3) for c in lm] for lm in frame]
+        for frame in reduced
+    ]
+    return reduced
+
+
 # --- Endpoints ---
 
 @app.get("/health", response_model=HealthResponse)
@@ -163,7 +179,7 @@ async def translate(req: TranslateRequest):
                 gloss=gloss,
                 type="skeleton",
                 found=True,
-                frames=frames,
+                frames=compress_frames(frames),
             ))
         else:
             signs.append(SignInfo(

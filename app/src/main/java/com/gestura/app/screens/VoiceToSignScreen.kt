@@ -347,7 +347,14 @@ private fun SkeletonCanvas(
             if (index >= frame.size) return null
             val point = frame[index]
             if (point.size < 2) return null
-            return Offset(point[0] * w, point[1] * h)
+            // Filter out padding/missing landmarks: all zero values
+            if (point[0] == 0f && point[1] == 0f && (point.size < 3 || point[2] == 0f)) {
+                return null
+            }
+            // Clamp normalized coords to 0.0–1.0 before scaling to canvas
+            val x = point[0].coerceIn(0f, 1f)
+            val y = point[1].coerceIn(0f, 1f)
+            return Offset(x * w, y * h)
         }
 
         // ── Body pose connections ──
@@ -445,7 +452,14 @@ private fun DrawScope.drawHand(
         if (absIdx >= frame.size) return null
         val pt = frame[absIdx]
         if (pt.size < 2) return null
-        return Offset(pt[0] * canvasW, pt[1] * canvasH)
+        // Filter out padding/missing landmarks: all zero values
+        if (pt[0] == 0f && pt[1] == 0f && (pt.size < 3 || pt[2] == 0f)) {
+            return null
+        }
+        // Clamp normalized coords to 0.0–1.0 before scaling to canvas
+        val x = pt[0].coerceIn(0f, 1f)
+        val y = pt[1].coerceIn(0f, 1f)
+        return Offset(x * canvasW, y * canvasH)
     }
 
     // Draw connections

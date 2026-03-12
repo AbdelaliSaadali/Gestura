@@ -17,7 +17,7 @@ interface GesturaApi {
 
     companion object {
         // 10.0.2.2 maps to the host machine's localhost inside the Android emulator
-        private const val BASE_URL = "http://10.0.2.2:8000/"
+        private const val BASE_URL = "http://172.16.0.87:8000/"
 
         fun create(): GesturaApi {
             val logger = HttpLoggingInterceptor().apply {
@@ -39,4 +39,3 @@ interface GesturaApi {
         }
     }
 }
-
